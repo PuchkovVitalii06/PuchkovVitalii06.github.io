@@ -51,12 +51,16 @@ body {
   display: flex;
   align-items: center;
   padding: 64px var(--pad);
-  /* мягкая подсветка сверху, чтобы фон не был плоским */
-  background-image: radial-gradient(
-    circle at 50% 0%,
-    rgba(56, 189, 248, 0.12),
-    transparent 60%
-  );
+
+  /* Фоновая картинка и затемняющий слой поверх неё. Слой обязателен:
+     в картинке есть почти белые полосы, на них светлый текст пропадает.
+     Путь относительный — от места, где лежит этот файл. */
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.75)),
+    url("images/bg-hero.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero__inner {
