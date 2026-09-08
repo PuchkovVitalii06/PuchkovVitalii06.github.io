@@ -1,0 +1,7 @@
+# Локальные настройки редактора — у каждого свои, в общий репозиторий не нужны
+.claude/settings.local.json
+
+# Служебные файлы ОС
+Thumbs.db
+desktop.ini
+.DS_Store
