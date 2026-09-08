@@ -13,17 +13,16 @@
 
   <!-- Превью при отправке ссылки в мессенджер или соцсеть.
 
-       ЗАМЕНИТЕ https://ВАШ-ДОМЕН на настоящий адрес сайта, когда он появится.
-       Здесь нужен полный адрес, а не относительный путь: мессенджер забирает
-       картинку со стороны, своей папки images у него нет. Пока адрес не указан,
-       превью показываться не будет. -->
+       Здесь стоит полный адрес, а не относительный путь: мессенджер забирает
+       картинку со своей стороны, папки images у него нет. Если адрес сайта
+       поменяется, эти две ссылки нужно поправить. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="Виталий Пучков">
   <meta property="og:title" content="Виталий Пучков — сайты для малого бизнеса">
   <meta property="og:description" content="Делаю простые и понятные сайты для малого бизнеса. Без лишнего — так, чтобы твой клиент сразу понял, чем ты можешь ему помочь, и написал тебе.">
-  <meta property="og:url" content="https://ВАШ-ДОМЕН/">
-  <meta property="og:image" content="https://ВАШ-ДОМЕН/images/og-preview.jpg">
+  <meta property="og:url" content="https://puchkovvitalii06.github.io/siteorsite.github.io/">
+  <meta property="og:image" content="https://puchkovvitalii06.github.io/siteorsite.github.io/images/og-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Виталий Пучков — сайты для малого бизнеса">
@@ -56,6 +55,164 @@
 
     </div>
   </header>
+
+
+  <!-- ЭКРАН 2: обо мне -->
+  <section class="section" id="about">
+    <div class="section__inner about">
+
+      <img class="about__photo"
+           src="images/photo_1_2026-09-08_13-28-27.webp"
+           width="960" height="1280"
+           loading="lazy"
+           alt="Виталий Пучков">
+
+      <div class="about__text">
+        <h2 class="section__title">Обо мне</h2>
+
+        <p>
+          Меня зовут Виталий. Я делаю сайты для людей, у которых небольшое
+          дело: мастеров, маленьких магазинов, тех, кто работает сам на себя.
+        </p>
+
+        <p>
+          Работаю так: сначала разбираюсь, кто твой клиент и что ему важно,
+          и только потом сажусь за макет. Пишу простым языком, показываю
+          промежуточный результат и не пропадаю после сдачи — если через месяц
+          нужно поменять цены или добавить фото, просто напиши.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ЭКРАН 3: что я делаю -->
+  <section class="section" id="services">
+    <div class="section__inner">
+
+      <h2 class="section__title">Что я делаю</h2>
+
+      <ul class="cards">
+        <li class="card">
+          <h3 class="card__title">Сайт-визитка</h3>
+          <p class="card__text">
+            Одна страница: кто ты, чем занимаешься, сколько стоит и как с тобой
+            связаться. Тот случай, когда клиенту нужно быстро понять, туда ли
+            он попал.
+          </p>
+        </li>
+
+        <li class="card">
+          <h3 class="card__title">Лендинг под услугу</h3>
+          <p class="card__text">
+            Страница под одно предложение или акцию. На неё удобно вести
+            рекламу: человек видит ровно то, за чем пришёл, без лишних разделов.
+          </p>
+        </li>
+
+        <li class="card">
+          <h3 class="card__title">Поддержка и правки</h3>
+          <p class="card__text">
+            Поменять цены, добавить новые фото, поправить текст. Мелкие правки
+            обычно делаю в тот же день — не нужно ждать неделю из-за одной
+            строчки.
+          </p>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- ЭКРАН 4: примеры работ
+
+       ЗАМЕНИТЕ, когда появятся настоящие проекты: в каждой карточке
+       поменяйте заголовок на название проекта, текст — на короткое описание,
+       а блок <div class="work__placeholder"> замените на картинку:
+       <img class="work__image" src="images/имя-файла.webp" alt="...">
+       Пока стоят честные заглушки: выдуманных клиентов на публичном
+       сайте быть не должно. -->
+  <section class="section" id="works">
+    <div class="section__inner">
+
+      <h2 class="section__title">Примеры работ</h2>
+      <p class="section__lead">
+        Здесь будут проекты. Пока показываю, какие задачи беру.
+      </p>
+
+      <ul class="cards">
+        <li class="card work">
+          <div class="work__placeholder" aria-hidden="true"></div>
+          <h3 class="card__title">Место для проекта</h3>
+          <p class="card__text">Сайт-визитка для мастера</p>
+        </li>
+
+        <li class="card work">
+          <div class="work__placeholder" aria-hidden="true"></div>
+          <h3 class="card__title">Место для проекта</h3>
+          <p class="card__text">Лендинг под услугу</p>
+        </li>
+
+        <li class="card work">
+          <div class="work__placeholder" aria-hidden="true"></div>
+          <h3 class="card__title">Место для проекта</h3>
+          <p class="card__text">Сайт небольшого магазина</p>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- ЭКРАН 5: контакты -->
+  <section class="section section--contacts" id="contacts">
+    <div class="section__inner">
+
+      <h2 class="section__title">Как со мной связаться</h2>
+      <p class="section__lead">
+        Напиши, куда удобнее. Отвечаю в течение дня.
+      </p>
+
+      <ul class="contacts">
+        <li>
+          <a class="contact" href="https://t.me/Vitaliy060101" target="_blank" rel="noopener">
+            <span class="contact__label">Telegram</span>
+            <span class="contact__value">@Vitaliy060101</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="contact" href="https://www.instagram.com/pu4kov_v1tal1y" target="_blank" rel="noopener">
+            <span class="contact__label">Instagram</span>
+            <span class="contact__value">@pu4kov_v1tal1y</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="contact" href="mailto:pu4kov787@gmail.com">
+            <span class="contact__label">Почта</span>
+            <span class="contact__value">pu4kov787@gmail.com</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="contact" href="tel:+380662303206">
+            <span class="contact__label">Телефон</span>
+            <span class="contact__value">+380 66 230 32 06</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="section__inner">
+      <p>Виталий Пучков · 2026</p>
+    </div>
+  </footer>
 
 </body>
 </html>

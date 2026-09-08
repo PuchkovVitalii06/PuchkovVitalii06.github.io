@@ -123,12 +123,186 @@ body {
 }
 
 /* ============================================
+   Общее для всех секций ниже первого экрана
+   ============================================ */
+
+.section {
+  padding: 72px var(--pad);
+}
+
+/* Та же максимальная ширина, что у первого экрана,
+   чтобы левый край текста совпадал на всей странице */
+.section__inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section__title {
+  margin: 0 0 16px;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.section__lead {
+  margin: 0 0 32px;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* ============================================
+   ЭКРАН 2: обо мне
+   ============================================ */
+
+.about {
+  display: grid;
+  gap: 28px;
+}
+
+.about__photo {
+  width: 100%;
+  max-width: 300px;
+  /* Рамка квадратная, а исходник 3:4 — за счёт разницы кадр реально
+     подрезается сверху. Смещение вниз убирает лишний дом над головой
+     и приближает фигуру. */
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center 78%;
+  border-radius: 16px;
+}
+
+.about__text p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Карточки: «что я делаю» и «примеры работ»
+   ============================================ */
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background-color: var(--surface);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.card__title {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card__text {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Пустое место под будущий скриншот проекта */
+.work__placeholder {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  background-color: rgba(148, 163, 184, 0.06);
+}
+
+/* ============================================
+   ЭКРАН 5: контакты
+   ============================================ */
+
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 520px;
+}
+
+/* Строкой, а не карточкой: карточки уже заняты работами,
+   и одинаковая подача размыла бы разницу между блоками */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  /* не ниже 44px — чтобы уверенно попадать пальцем */
+  min-height: 56px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact__label {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.contact__value {
+  color: var(--accent);
+  font-weight: 500;
+  /* длинная почта не должна распирать страницу вбок */
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.contact:hover .contact__value {
+  color: var(--text);
+}
+
+.contact:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.footer {
+  padding: 32px var(--pad) 48px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* ============================================
    Десктоп
    ============================================ */
 
 @media (min-width: 768px) {
   :root {
     --pad: 48px;
+  }
+
+  .section {
+    padding: 104px var(--pad);
+  }
+
+  /* Фото слева, текст справа */
+  .about {
+    grid-template-columns: 300px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
