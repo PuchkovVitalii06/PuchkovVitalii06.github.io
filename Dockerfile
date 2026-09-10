@@ -1,8 +1,16 @@
 # Как Railway собирает сайт.
-# Берём готовый образ с веб-сервером Caddy и кладём внутрь файлы сайта.
-# Ничего не собирается и не компилируется — это по-прежнему обычные HTML и CSS.
+# Раньше файлы просто раздавал готовый образ Caddy. Теперь сайт ещё и
+# принимает заявки, поэтому вместо веб-сервера — свой процесс на Node:
+# server.js раздаёт файлы из public/ и обрабатывает /api/leads.
 
-FROM caddy:2-alpine
+FROM node:22-alpine
 
-COPY Caddyfile /etc/caddy/Caddyfile
-COPY . /srv
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+COPY server.js ./
+COPY public ./public
+
+CMD ["node", "server.js"]

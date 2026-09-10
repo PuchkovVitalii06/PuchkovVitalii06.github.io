@@ -48,9 +48,8 @@
         Без лишнего. Так, чтобы твой клиент сразу понял, чем ты можешь ему помочь, и написал тебе.
       </p>
 
-      <!-- Ведёт в Telegram. Обычный вариант текста кнопки: «Написать мне» -->
-      <a class="hero__button" href="https://t.me/Vitaliy060101" target="_blank" rel="noopener">
-        Сайт почти готов
+      <a class="hero__button" href="#apply">
+        Оставить заявку
       </a>
 
     </div>
@@ -165,6 +164,62 @@
   </section>
 
 
+  <!-- ЭКРАН: заявка -->
+  <section class="section" id="apply">
+    <div class="section__inner">
+
+      <h2 class="section__title">Оставить заявку</h2>
+      <p class="section__lead">
+        Заполни форму — отвечу в течение дня. Или напиши напрямую, контакты ниже.
+      </p>
+
+      <form class="apply-form" id="apply-form" novalidate>
+
+        <div class="field">
+          <label class="field__label" for="apply-name">Имя</label>
+          <input class="field__input" type="text" id="apply-name" name="name"
+                 autocomplete="name" required minlength="2" maxlength="80">
+          <p class="field__error" data-error-for="name" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="apply-contact">Как связаться</label>
+          <input class="field__input" type="text" id="apply-contact" name="contact"
+                 placeholder="Телефон или @ник в Telegram"
+                 autocomplete="tel" required minlength="3" maxlength="80">
+          <p class="field__error" data-error-for="contact" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="apply-service">Что нужно</label>
+          <select class="field__input" id="apply-service" name="service" required>
+            <option value="" disabled selected>Выбери из списка</option>
+            <option value="Сайт-визитка">Сайт-визитка</option>
+            <option value="Лендинг под услугу">Лендинг под услугу</option>
+            <option value="Поддержка и правки">Поддержка и правки</option>
+            <option value="Другое">Другое</option>
+          </select>
+          <p class="field__error" data-error-for="service" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="apply-comment">
+            Комментарий <span class="field__optional">(необязательно)</span>
+          </label>
+          <textarea class="field__input field__input--textarea" id="apply-comment" name="comment"
+                    rows="4" maxlength="500"></textarea>
+        </div>
+
+        <button class="apply-form__submit" type="submit">Отправить заявку</button>
+
+        <p class="apply-form__status" id="apply-status" role="status" aria-live="polite" hidden></p>
+
+      </form>
+
+    </div>
+  </section>
+
+
   <!-- ЭКРАН 5: контакты -->
   <section class="section section--contacts" id="contacts">
     <div class="section__inner">
@@ -213,6 +268,8 @@
       <p>Виталий Пучков · 2026</p>
     </div>
   </footer>
+
+  <script src="app.js" defer></script>
 
 </body>
 </html>

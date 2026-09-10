@@ -8,10 +8,18 @@ CLAUDE.md
 Dockerfile
 .dockerignore
 
+# Ставится заново внутри контейнера через npm ci — свою копию не тащим
+node_modules
+
+# Секреты и бэкапы — им тут точно не место
+.env
+.env.*
+backup
+
 # Оригиналы фотографий: сайту они не нужны, он показывает сжатые WebP.
 # В репозитории оригиналы остаются на месте.
-images/*.jpg
+public/images/*.jpg
 
 # Картинка превью для мессенджеров — исключение: она нужна,
 # её забирает Telegram по прямой ссылке
-!images/og-preview.jpg
+!public/images/og-preview.jpg

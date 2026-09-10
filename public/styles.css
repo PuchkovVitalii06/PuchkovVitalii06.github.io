@@ -12,6 +12,8 @@
   --muted:   #94a3b8;  /* приглушённый текст */
   --accent:  #38bdf8;  /* акцент: кнопки, ссылки */
   --accent-dark: #0ea5e9;
+  --success: #34d399;  /* заявка отправлена успешно */
+  --danger:  #f87171;  /* ошибка в поле или сбой отправки */
 
   --max-width: 1100px;
   --pad: 24px;
@@ -220,6 +222,118 @@ body {
   border-radius: 10px;
   border: 1px dashed rgba(148, 163, 184, 0.35);
   background-color: rgba(148, 163, 184, 0.06);
+}
+
+/* ============================================
+   ЭКРАН: заявка
+   ============================================ */
+
+.apply-form {
+  display: grid;
+  gap: 20px;
+  max-width: 480px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.field__optional {
+  font-weight: 400;
+}
+
+.field__input {
+  width: 100%;
+  padding: 12px 14px;
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.field__input::placeholder {
+  color: var(--muted);
+}
+
+.field__input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Подсветка поля, которое не прошло проверку */
+.field__input--invalid {
+  border-color: var(--danger);
+}
+
+.field__input--textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.field__error {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--danger);
+}
+
+.apply-form__submit {
+  justify-self: start;
+  display: inline-block;
+  padding: 16px 32px;
+  min-height: 44px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: #0f172a;
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.apply-form__submit:hover {
+  background-color: var(--accent-dark);
+}
+
+.apply-form__submit:active {
+  transform: translateY(1px);
+}
+
+.apply-form__submit:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Пока идёт отправка — чтобы не жали второй раз */
+.apply-form__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.apply-form__status {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+}
+
+.apply-form__status--success {
+  background-color: rgba(52, 211, 153, 0.12);
+  color: var(--success);
+}
+
+.apply-form__status--error {
+  background-color: rgba(248, 113, 113, 0.12);
+  color: var(--danger);
 }
 
 /* ============================================
