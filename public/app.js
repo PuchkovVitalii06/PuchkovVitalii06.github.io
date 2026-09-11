@@ -3,6 +3,40 @@
 // прямо из браузера. Всё, что боится чужих глаз — на сервере, в server.js.
 
 (function () {
+  // Отправка событий в Google Analytics. Если gtag не загрузился
+  // (например, блокировщик рекламы) — просто ничего не отправляем,
+  // страница из-за этого ломаться не должна.
+  function track(name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  // Клик по главной кнопке на первом экране
+  const heroButton = document.querySelector('.hero__button');
+  if (heroButton) {
+    heroButton.addEventListener('click', function () {
+      track('click_hero_cta');
+    });
+  }
+
+  // Клики по ссылкам с контактами — событие называем по каналу,
+  // чтобы в отчётах Google Analytics сразу было видно, куда написали
+  document.querySelectorAll('.contact').forEach(function (link) {
+    const href = link.getAttribute('href') || '';
+    let eventName = null;
+    if (href.indexOf('https://t.me/') === 0) eventName = 'click_contact_telegram';
+    else if (href.indexOf('https://www.instagram.com/') === 0) eventName = 'click_contact_instagram';
+    else if (href.indexOf('mailto:') === 0) eventName = 'click_contact_email';
+    else if (href.indexOf('tel:') === 0) eventName = 'click_contact_phone';
+
+    if (eventName) {
+      link.addEventListener('click', function () {
+        track(eventName);
+      });
+    }
+  });
+
   const form = document.getElementById('apply-form');
   if (!form) return;
 
@@ -98,6 +132,7 @@
         if (result.ok && result.data.ok) {
           form.reset();
           showStatus('success', 'Спасибо! Заявка отправлена, отвечу в течение дня.');
+          track('submit_lead_form', { service: payload.service });
           return;
         }
 
