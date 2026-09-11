@@ -6,8 +6,37 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
+    // Google Consent Mode v2. Значение по умолчанию — «отказано»: пока
+    // человек не нажал «Принять» в баннере внизу страницы, счётчик не
+    // ставит cookie и не хранит ничего, что можно связать с конкретным
+    // посетителем. Это должно стоять раньше gtag('config', ...) — иначе
+    // счётчик успеет сработать при значениях по умолчанию, то есть
+    // «разрешено», ещё до того, как мы скажем ему обратное.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+    });
+
+    // Если согласие уже сохранено с прошлого визита — применяем его сразу,
+    // до первого же запроса от счётчика, а не после того, как отрисуется баннер
+    try {
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted',
+        });
+      }
+    } catch (e) {
+      // localStorage недоступен (приватный режим и т.п.) — просто останемся
+      // на значениях по умолчанию, баннер человек увидит снова
+    }
+
+    gtag('js', new Date());
     gtag('config', 'G-2DGPMZWTNH');
   </script>
 
@@ -279,6 +308,33 @@
     </div>
   </footer>
 
+  <!-- Баннер согласия на аналитику (Google Consent Mode v2).
+       Скрыт атрибутом hidden по умолчанию — consent.js показывает его,
+       только если человек ещё не выбирал раньше. Без JS баннер так и
+       останется скрытым, а счётчик — на значениях по умолчанию, то есть
+       без согласия: это безопасное поведение, а не поломка. -->
+  <div class="consent-banner" id="consent-banner" role="dialog" aria-live="polite"
+       aria-label="Согласие на использование аналитики" hidden>
+    <div class="consent-banner__inner">
+      <div class="consent-banner__text">
+        <p class="consent-banner__title">Файлы cookie и аналитика</p>
+        <p class="consent-banner__desc">
+          Использую Google Analytics, чтобы понимать, что на сайте работает.
+          Без согласия счётчик ничего не сохраняет.
+        </p>
+      </div>
+      <div class="consent-banner__actions">
+        <button class="consent-banner__button consent-banner__button--reject" type="button" id="consent-reject">
+          Отклонить
+        </button>
+        <button class="consent-banner__button consent-banner__button--accept" type="button" id="consent-accept">
+          Принять
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="consent.js" defer></script>
   <script src="app.js" defer></script>
 
 </body>
