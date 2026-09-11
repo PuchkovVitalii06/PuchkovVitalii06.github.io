@@ -195,6 +195,9 @@ const server = http.createServer((request, response) => {
 
   serveHandler(request, response, {
     public: PUBLIC_DIR,
+    // Не показывать содержимое папок: запрос /images/ должен давать 404,
+    // а не список файлов. Наружу отдаём только то, на что есть прямая ссылка.
+    directoryListing: false,
     headers: [
       {
         // Картинки не меняются — разрешаем браузеру кэшировать их на неделю
